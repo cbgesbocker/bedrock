@@ -23,7 +23,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./project/:/var/www/html
-      - ./php/:/usr/local/etc/php
+      - ./php/conf.d/:/usr/local/etc/php/conf.d
+    # command: "docker-php-ext-install mysqli && docker-php-ext-enable mysqli"
     networks:
       - app-network
 
