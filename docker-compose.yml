@@ -18,20 +18,12 @@ services:
   wordpress:
     depends_on:
       - db
-    image: wordpress:5.1.1-fpm-alpine
+    image: php:7.2-fpm
     container_name: wordpress
     restart: unless-stopped
-    env_file: .env
-    environment:
-      - WORDPRESS_DB_HOST=db:3306
-      - WORDPRESS_DB_USER=$DB_USER
-      - WORDPRESS_DB_PASSWORD=$DB_PASSWORD
-      - WORDPRESS_DB_NAME=wordpress
-
     volumes:
-      - web:/var/www/html
-      - config:/var/www/config
-      - vendor:/var/www/vendor
+      - ./project/:/var/www/html
+      - ./php/:/usr/local/etc/php
     networks:
       - app-network
 
@@ -44,20 +36,15 @@ services:
     ports:
       - "80:80"
     volumes:
-      - web:/var/www/html
-      - config:/var/www/config
-      - vendor:/var/www/vendor
-      - nginx-conf:/etc/nginx/conf.d
+      - ./project/:/var/www/html
+      - ./nginx-conf:/etc/nginx/conf.d
     networks:
       - app-network
 
 volumes:
-  wordpress:
   dbdata:
-  config:
-  vendor:
+  project:
   nginx-conf:
-  web:
 
 networks:
   app-network:
