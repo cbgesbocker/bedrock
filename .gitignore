@@ -1,17 +1,17 @@
 # Application
-./project/web/app/plugins/*
-./project/!web/app/plugins/.gitkeep
-./project/web/app/mu-plugins/*/
-./project/web/app/upgrade
-./project/web/app/uploads/*
-./project/!web/app/uploads/.gitkeep
+project/!web/app/plugins/.gitkeep
+project/web/app/mu-plugins/*/
+project/web/app/plugins/*
+project/web/app/upgrade
+project/web/app/uploads/*
+project/!web/app/uploads/.gitkeep
 
 # WordPress
-./project/web/wp
-./project/web/.htaccess
+project/web/.htaccess
+project/web/wp
 
 # Logs
-./project/*.log
+project/*.log
 
 # Dotenv
 .env
